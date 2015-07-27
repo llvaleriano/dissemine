@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">
+
+			<h:form prependId="false" enctype="multipart/form-data">
+				<h:messages />
+				<h3>Cadastro de livros impressos</h3>
+				
+				<table>
+					<tr>
+						<td>Titulo: </td>
+						<td><h:inputText value="#{livroImpressoBean.livroImpresso.titulo}"/></td>
+					</tr>
+					<tr>
+						<td>Descrição: </td>
+						<td><h:inputText value="#{livroImpressoBean.livroImpresso.descricao}"/></td>
+					</tr>
+					<tr>
+						<td>Nr. de páginas: </td>
+						<td><h:inputText value="#{livroImpressoBean.livroImpresso.numeroPaginas}"/></td>
+					</tr>
+					<tr>
+						<td>ISBN: </td>
+						<td><h:inputText value="#{livroImpressoBean.livroImpresso.isbn}"/></td>
+					</tr>
+					<tr>
+						<td>Editora: </td>
+						<td>
+							<h:selectOneMenu value="#{livroImpressoBean.livroImpresso.editora}" >
+								<f:selectItem itemLabel="--- Selecione a editora ---" noSelectionOption="true" />
+								<f:selectItems value="#{editoraBean.editoras}" var="editora" itemValue="#{editora}" itemLabel="#{editora.nome}" />
+							</h:selectOneMenu>				
+						</td>
+					</tr>
+					<tr>
+						<td>Autor: </td>
+						<td>
+							<h:selectOneMenu value="#{livroImpressoBean.autor}" id="autor" label="autor">
+								<f:selectItem itemLabel="--- Selecione o autor ---" noSelectionOption="true" />
+								<f:selectItems value="#{autorBean.autores}" var="autor" itemValue="#{autor}" itemLabel="#{autor.nome}" />
+							</h:selectOneMenu>				
+						</td>
+					</tr>
+					
+					<tr>
+						<td>Imagem da capa</td>
+						<td>
+							<h:inputFile value="#{livroImpressoBean.imagemCapa}"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><hr/></td>
+					</tr>
+					<tr>
+						<td colspan="2">Livro impresso</td>
+					</tr>
+					<tr>
+						<td>R$ impresso: </td>
+						<td><h:inputText value="#{livroImpressoBean.livroImpresso.valor}" /></td>
+					</tr>
+					<tr>
+						<td>Altura:</td>
+						<td><h:inputText/></td>
+					</tr>
+					<tr>
+						<td>Largura:</td>
+						<td><h:inputText/></td>
+					</tr>
+					<tr>
+						<td>Peso:</td>
+						<td><h:inputText/></td>
+					</tr>
+					<tr>
+						<td colspan="2"><hr/></td>
+					</tr>
+					<tr>
+						<td>
+							<h:inputHidden value="#{livroImpressoBean.livroImpresso.id}"/>
+						</td>
+						<td>
+							<h:commandButton value="salvar" action="#{livroImpressoBean.salvar()}"/>				
+						</td>
+					</tr>
+				</table>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

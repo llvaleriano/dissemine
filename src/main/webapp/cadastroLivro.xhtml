@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+<h:body>
+	<h:form>
+		<h:messages />
+		<h3>Cadastro de livros</h3>
+		
+		<table>
+			<tr>
+				<td>Titulo: </td>
+				<td><h:inputText value="#{livroBean.livroImpresso.titulo}"/></td>
+			</tr>
+			<tr>
+				<td>Descrição: </td>
+				<td><h:inputText value="#{livroBean.livroImpresso.descricao}"/></td>
+			</tr>
+			<tr>
+				<td>Nr. de páginas: </td>
+				<td><h:inputText value="#{livroBean.livroImpresso.numeroPaginas}"/></td>
+			</tr>
+			<tr>
+				<td>ISBN: </td>
+				<td><h:inputText value="#{livroBean.livroImpresso.isbn}"/></td>
+			</tr>
+			<tr>
+				<td>Editora: </td>
+				<td>
+					<h:selectOneMenu value="#{livroBean.livroImpresso.editora}" >
+						<f:selectItem itemLabel="--- Selecione a editora ---" noSelectionOption="true" />
+						<f:selectItems value="#{editoraBean.editoras}" var="editora" itemValue="#{editora}" itemLabel="#{editora.nome}" />
+					</h:selectOneMenu>				
+				</td>
+			</tr>
+			<tr>
+				<td>Autores: </td>
+				<td>
+					<h:selectManyCheckbox layout="pageDirection">
+						<f:selectItems value="#{autorBean.autores}" var="autor" itemValue="#{autor}" itemLabel="#{autor.nome}" />
+					</h:selectManyCheckbox>				
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Livro impresso</td>
+			</tr>
+			<tr>
+				<td>R$ impresso: </td>
+				<td><h:inputText value="#{livroBean.valorLivroImpresso}" /></td>
+			</tr>
+			<tr>
+				<td>Altura:</td>
+				<td><h:inputText/></td>
+			</tr>
+			<tr>
+				<td>Largura:</td>
+				<td><h:inputText/></td>
+			</tr>
+			<tr>
+				<td>Peso:</td>
+				<td><h:inputText/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Livro Digital</td>
+			</tr>
+			<tr>
+				<td>R$ digital: </td>
+				<td><h:inputText value="#{livroBean.valorLivroDigital}"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Mini livro</td>
+			</tr>
+			<tr>
+				<td>R$ minilivro: </td>
+				<td><h:inputText value="#{livroBean.valorMiniLivro}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr/></td>
+			</tr>
+			<tr>
+				<td>
+					<h:inputHidden value="#{livroBean.livroImpresso.id}"/>
+				</td>
+				<td>
+					<h:commandButton value="salvar" action="#{livroBean.salvar()}"/>				
+				</td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

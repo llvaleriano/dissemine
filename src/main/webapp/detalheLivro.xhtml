@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+<h:body>
+	<ui:composition template="/WEB-INF/comum/template.xhtml">
+		<ui:define name="corpo">
+
+			<h3><h:outputText value="#{detalheLivroBean.livro.titulo}" /></h3>
+		
+			<table>
+				<tr>
+					<td rowspan="6">
+						<img src="#{detalheLivroBean.livro.urlImagemCapa}"/>
+					</td>
+				</tr>
+				<tr valign="top">
+					<td>Descrição: </td>
+					<td>#{detalheLivroBean.livro.descricao}</td>
+				</tr>
+				<tr valign="top">
+					<td>Nr. de páginas: </td>
+					<td>#{detalheLivroBean.livro.numeroPaginas}</td>
+				</tr>
+				<tr valign="top">
+					<td>ISBN: </td>
+					<td>#{detalheLivroBean.livro.isbn}</td>
+				</tr>
+				<tr valign="top">
+					<td>Editora: </td>
+					<td>#{detalheLivroBean.livro.editora.nome}</td>
+				</tr>
+				<tr valign="top">
+					<td>R$ impresso: </td>
+					<td>
+						<h:outputText value="#{detalheLivroBean.livro.valor}">
+							<f:convertNumber type="currency" />
+						</h:outputText>
+					</td>
+				</tr>
+			</table>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
